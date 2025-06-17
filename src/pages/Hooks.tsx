@@ -1,82 +1,11 @@
 import React from "react";
 import Layout from "../components/Layout";
 import Explicacion from "../components/Explicacion";
-import Contador from "../components/Contador";
-import { useContador } from "../components/useContador";
-
-const HookExample: React.FC = () => {
-  const { count, increment, decrement, reset } = useContador(0);
-
-  return (
-    <div className="content-section">
-      <h3 className="section-subtitle">Usando nuestro Hook Personalizado:</h3>
-      <div className="interactive-demo">
-        <div className="counter-display">
-          <span className="count-value">{count}</span>
-        </div>
-        <div className="button-group">
-          <button onClick={increment} className="btn btn-primary">
-            Incrementar
-          </button>
-          <button onClick={decrement} className="btn btn-secondary">
-            Decrementar
-          </button>
-          <button onClick={reset} className="btn btn-accent">
-            Resetear
-          </button>
-        </div>
-      </div>
-      <div className="code-explanation">
-        <p>
-          Este contador utiliza nuestro hook personalizado{" "}
-          <code>useContador</code> que encapsula toda la lógica de manejo del
-          estado.
-        </p>
-      </div>
-    </div>
-  );
-};
+import HookExample from "../components/HookExample";
+import { Settings, Repeat, Beaker, Code, Layers, TestTube2 } from "lucide-react";
 
 const Hooks: React.FC = () => {
-  return (
-    <Layout>
-      <div className="animate-fade-in">
-        <div className="page-header">
-          <h1 className="page-title">
-            <span style={{ color: "#9C27B0" }}>Hooks</span>{" "}
-            <span style={{ color: "#E91E63" }}>Personalizados</span>
-          </h1>
-          <p className="page-subtitle">
-            Crea lógica reutilizable con hooks personalizados
-          </p>
-        </div>
-
-        <div className="container">
-          <Explicacion
-            titulo="Hooks Personalizados en React"
-            descripcion="Los hooks personalizados te permiten extraer la lógica de los componentes en funciones reutilizables. Son una forma poderosa de compartir funcionalidad entre diferentes componentes sin duplicar código."
-            conceptos={[
-              "Definición de hooks personalizados",
-              "Reutilización de lógica de estado",
-              "Composición de hooks nativos",
-              "Patrones comunes de hooks",
-              "Testing de hooks personalizados",
-              "Mejores prácticas",
-            ]}
-            enlaceDocu="https://react.dev/learn/reusing-logic-with-custom-hooks"
-          />
-
-          <div className="content-section">
-            <h2 className="section-title">Ejemplo: Hook useContador</h2>
-            <p className="section-description">
-              Vamos a crear un hook personalizado que encapsule la lógica de un
-              contador:
-            </p>
-
-            <div className="code-block">
-              <pre>
-                <code>{`// useContador.ts
-import { useState } from 'react';
+  const codigoEjemplo = `import { useState } from "react";
 
 export const useContador = (initialValue: number = 0) => {
   const [count, setCount] = useState(initialValue);
@@ -86,85 +15,86 @@ export const useContador = (initialValue: number = 0) => {
   const reset = () => setCount(initialValue);
 
   return { count, increment, decrement, reset };
-};`}</code>
-              </pre>
-            </div>
-          </div>
+};`;
 
+  const codigoAvanzado = `// Ejemplo de hook compuesto
+export const useHistorial = (initialValue: number = 0) => {
+  const { count, increment, decrement, reset } = useContador(initialValue);
+  const [historial, setHistorial] = useState<number[]>([]);
+
+  const guardarEnHistorial = () => {
+    setHistorial(prev => [...prev, count]);
+  };
+
+  return { count, increment, decrement, reset, historial, guardarEnHistorial };
+};`;
+
+  const puntosClave = [
+    "Los hooks permiten reutilizar lógica en distintos componentes.",
+    "Un hook personalizado encapsula lógica en una función reutilizable.",
+    "Se pueden combinar varios hooks para crear funcionalidades más avanzadas.",
+    "Los hooks mejoran la separación de responsabilidades dentro de los componentes.",
+  ];
+
+  return (
+    <Layout>
+      <div className="animate-fade-in">
+        {/* Encabezado */}
+        <div className="page-header">
+          <h1 className="page-title">Hooks Personalizados</h1>
+          <p className="page-subtitle">
+            Aprende a crear lógica reutilizable con hooks en React.
+          </p>
+        </div>
+
+        {/* Explicación principal */}
+        <Explicacion
+          titulo="¿Qué es un Hook Personalizado?"
+          concepto="Reutilización de lógica"
+          descripcion="Los hooks personalizados te permiten encapsular lógica dentro de funciones reutilizables. Esto hace que tu código sea más modular y fácil de mantener."
+          codigo={codigoEjemplo}
+          puntosClave={puntosClave}
+        />
+
+        {/* Ejemplo básico */}
+        <div className="grid-layout">
           <HookExample />
+        </div>
 
-          <div className="content-section">
-            <h2 className="section-title">
-              Comparación con Componente Tradicional
-            </h2>
-            <p className="section-description">
-              Aquí puedes ver la diferencia entre usar nuestro hook
-              personalizado y un contador tradicional:
-            </p>
-            <Contador />
-          </div>
+        {/* Sección avanzada */}
+        <div className="content-section">
+          <h3 className="section-title">Composición de Hooks</h3>
+          <p>Puedes combinar hooks para crear funcionalidades más complejas:</p>
+          <pre className="code-block">{codigoAvanzado}</pre>
+        </div>
 
-          <div className="content-section">
-            <h3 className="section-subtitle">
-              Ventajas de los Hooks Personalizados:
-            </h3>
-            <div className="concepts-grid">
-              <div className="concept-card">
-                <h4>🔄 Reutilización</h4>
-                <p>
-                  Usa la misma lógica en múltiples componentes sin duplicar
-                  código.
-                </p>
+        {/* Ventajas */}
+        <div className="content-section text-center">
+          <h3 className="section-title">Ventajas de los Hooks Personalizados</h3>
+          <div className="grid-layout">
+            {[
+              {
+                icon: <Settings size={40} className="text-accent" />,
+                title: "Modularidad",
+                desc: "Facilitan la organización del código y la reutilización de lógica."
+              },
+              {
+                icon: <Repeat size={40} className="text-primary" />,
+                title: "Reutilización",
+                desc: "Permiten compartir lógica sin duplicar código en múltiples componentes."
+              },
+              {
+                icon: <TestTube2 size={40} className="text-warning" />,
+                title: "Testing",
+                desc: "Los hooks personalizados pueden ser probados de manera independiente."
+              }
+            ].map((item, index) => (
+              <div key={index} className="content-card">
+                {item.icon}
+                <h4>{item.title}</h4>
+                <p>{item.desc}</p>
               </div>
-              <div className="concept-card">
-                <h4>🧹 Separación de Responsabilidades</h4>
-                <p>
-                  Mantén la lógica de negocio separada de la presentación del
-                  componente.
-                </p>
-              </div>
-              <div className="concept-card">
-                <h4>🧪 Testing</h4>
-                <p>
-                  Los hooks personalizados se pueden testear de forma
-                  independiente.
-                </p>
-              </div>
-              <div className="concept-card">
-                <h4>📚 Composición</h4>
-                <p>
-                  Combina múltiples hooks para crear funcionalidades más
-                  complejas.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="content-section">
-            <h3 className="section-subtitle">Patrones Comunes:</h3>
-            <div className="pattern-list">
-              <div className="pattern-item">
-                <h4>useLocalStorage</h4>
-                <p>Sincroniza estado con localStorage del navegador.</p>
-              </div>
-              <div className="pattern-item">
-                <h4>useFetch</h4>
-                <p>Maneja peticiones HTTP con estados de carga y error.</p>
-              </div>
-              <div className="pattern-item">
-                <h4>useToggle</h4>
-                <p>
-                  Alterna entre valores booleanos (útil para modales, menus,
-                  etc.).
-                </p>
-              </div>
-              <div className="pattern-item">
-                <h4>useDebounce</h4>
-                <p>
-                  Retrasa la ejecución de funciones para optimizar rendimiento.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
