@@ -1,78 +1,91 @@
-/* Estilos de formularios */
+/* Estilos de formularios - Versión INACAP Mejorada */
 .form-container {
-  background: var(--surface);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 6px var(--shadow);
-  border: 1px solid var(--border);
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #D50000; /* Borde acentuado INACAP */
+  margin: 2rem auto;
+  max-width: 800px;
+  transition: all 0.3s ease;
+}
+
+.form-container:hover {
+  box-shadow: 0 6px 25px rgba(213, 0, 0, 0.12); /* Sombra roja sutil */
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  position: relative;
 }
 
 .form-label {
   display: block;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  color: #0D47A1; /* Azul INACAP */
+  font-size: 1rem;
+  letter-spacing: 0.3px;
 }
 
 .form-input,
 .form-textarea,
 .form-select {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--border);
+  padding: 1rem;
+  border: 2px solid #E0E0E0;
   border-radius: 8px;
-  background: var(--background);
-  color: var(--text-primary);
+  background: #FAFAFA;
+  color: #212121;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-family: inherit;
 }
 
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #D50000; /* Rojo INACAP */
+  box-shadow: 0 0 0 3px rgba(213, 0, 0, 0.15);
+  background: white;
 }
 
 .form-input.error,
 .form-textarea.error,
 .form-select.error {
-  border-color: var(--error-color);
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: #C62828;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
 }
 
 .form-input.success,
 .form-textarea.success,
 .form-select.success {
-  border-color: var(--success-color);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  border-color: #2E7D32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
 .form-textarea {
-  min-height: 120px;
+  min-height: 150px;
   resize: vertical;
+  line-height: 1.6;
 }
 
+/* Checkbox y Radio personalizados */
 .form-checkbox,
 .form-radio {
-  margin-right: 0.5rem;
-  transform: scale(1.2);
-  accent-color: var(--primary-color);
+  margin-right: 0.75rem;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 .form-checkbox-group,
 .form-radio-group {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .checkbox-item,
@@ -80,42 +93,46 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  background: #FAFAFA;
 }
 
 .checkbox-item:hover,
 .radio-item:hover {
-  background: rgba(59, 130, 246, 0.05);
+  background: #F5F5F5;
 }
 
+.checkbox-item label,
+.radio-item label {
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+/* Botones mejorados */
 .form-button {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background: linear-gradient(135deg, #D50000, #B71C1C); /* Gradiente INACAP */
   color: white;
   border: none;
-  padding: 0.875rem 2rem;
-  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  min-width: 180px;
 }
 
 .form-button:hover {
-  background: linear-gradient(
-    135deg,
-    var(--secondary-color),
-    var(--primary-color)
-  );
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, #B71C1C, #D50000);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(213, 0, 0, 0.3);
 }
 
 .form-button:active {
@@ -123,56 +140,97 @@
 }
 
 .form-button.secondary {
-  background: var(--surface);
-  color: var(--text-primary);
-  border: 2px solid var(--border);
+  background: white;
+  color: #D50000;
+  border: 2px solid #D50000;
+  box-shadow: none;
 }
 
 .form-button.secondary:hover {
-  background: var(--border);
+  background: #FFEBEE; /* Rojo muy claro */
+  box-shadow: 0 4px 12px rgba(213, 0, 0, 0.15);
 }
 
+/* Mensajes de error/éxito */
 .form-error {
-  color: var(--error-color);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  color: #C62828;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #FFEBEE;
+  border-radius: 4px;
 }
 
 .form-success {
-  color: var(--success-color);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  color: #2E7D32;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #E8F5E9;
+  border-radius: 4px;
 }
 
+/* Layout de formularios */
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .form-inline {
   display: flex;
-  gap: 1rem;
-  align-items: end;
+  gap: 1.5rem;
+  align-items: flex-end;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .form-container {
-    padding: 1.5rem;
+    padding: 1.75rem;
+    margin: 1rem;
+    border-left-width: 3px;
   }
 
   .form-inline {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
+  }
+
+  .form-button {
+    width: 100%;
+    padding: 1rem;
   }
 
   .form-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Animación para inputs */
+@keyframes inputHighlighter {
+  from {
+    background: #D50000;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+/* Mejora para selects */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D50000'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5rem;
+  padding-right: 3rem;
 }
