@@ -13,6 +13,9 @@ import {
   Code,
   Users,
   Target,
+  Database,
+  Settings,
+  Layers,
 } from "lucide-react";
 import "../styles/navbar.css";
 
@@ -42,9 +45,9 @@ const Navbar: React.FC = () => {
     { path: "/estados", label: "Estados", icon: <Target size={18} /> },
     { path: "/eventos", label: "Eventos", icon: <Zap size={18} /> },
     { path: "/formularios", label: "Formularios", icon: <List size={18} /> },
-    { path: "/listas", label: "Listas", icon: <Code size={18} /> },
-    { path: "/efectos", label: "Efectos", icon: <Zap size={18} /> },
-    { path: "/datos", label: "Datos", icon: <Mail size={18} /> },
+    { path: "/listas", label: "Listas", icon: <Layers size={18} /> },
+    { path: "/efectos", label: "Efectos", icon: <Settings size={18} /> },
+    { path: "/datos", label: "Datos", icon: <Database size={18} /> },
     { path: "/comunicacion", label: "Comunicación", icon: <Users size={18} /> },
     { path: "/temas", label: "Temas", icon: <Palette size={18} /> },
     { path: "/hooks", label: "Hooks", icon: <Code size={18} /> },
