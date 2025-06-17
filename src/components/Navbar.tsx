@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun, Home, Zap, Palette, List, Mail, Code, Users, Target } from "lucide-react";
+import {
+  Menu,
+  X,
+  Moon,
+  Sun,
+  Home,
+  Zap,
+  Palette,
+  List,
+  Mail,
+  Code,
+  Users,
+  Target,
+} from "lucide-react";
 import "../styles/navbar.css";
 
 const Navbar: React.FC = () => {
@@ -28,11 +41,13 @@ const Navbar: React.FC = () => {
     { path: "/", label: "Inicio", icon: <Home size={18} /> },
     { path: "/estados", label: "Estados", icon: <Target size={18} /> },
     { path: "/eventos", label: "Eventos", icon: <Zap size={18} /> },
-    { path: "/temas", label: "Temas", icon: <Palette size={18} /> },
     { path: "/formularios", label: "Formularios", icon: <List size={18} /> },
     { path: "/listas", label: "Listas", icon: <Code size={18} /> },
     { path: "/efectos", label: "Efectos", icon: <Zap size={18} /> },
+    { path: "/datos", label: "Datos", icon: <Mail size={18} /> },
     { path: "/comunicacion", label: "Comunicación", icon: <Users size={18} /> },
+    { path: "/temas", label: "Temas", icon: <Palette size={18} /> },
+    { path: "/hooks", label: "Hooks", icon: <Code size={18} /> },
   ];
 
   return (
@@ -60,18 +75,18 @@ const Navbar: React.FC = () => {
             </li>
           ))}
           <li>
-            <button 
-              onClick={toggleTheme} 
+            <button
+              onClick={toggleTheme}
               className="theme-toggle"
-              aria-label={`Cambiar a tema ${isDarkMode ? 'claro' : 'oscuro'}`}
+              aria-label={`Cambiar a tema ${isDarkMode ? "claro" : "oscuro"}`}
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </li>
         </ul>
 
-        <button 
-          className="mobile-menu-toggle" 
+        <button
+          className="mobile-menu-toggle"
           onClick={toggleMobileMenu}
           aria-label="Menú de navegación"
         >
@@ -80,14 +95,15 @@ const Navbar: React.FC = () => {
 
         <div className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-menu-header">
-            <Link to="/" className="mobile-brand" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link
+              to="/"
+              className="mobile-brand"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <Code size={24} className="logo-icon" />
               <span>React-INACAP</span>
             </Link>
-            <button 
-              onClick={toggleTheme} 
-              className="mobile-theme-toggle"
-            >
+            <button onClick={toggleTheme} className="mobile-theme-toggle">
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </div>
